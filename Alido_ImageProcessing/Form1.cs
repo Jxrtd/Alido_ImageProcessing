@@ -62,7 +62,7 @@ namespace Alido_ImageProcessing
 
             if (videoSource != null && videoSource.IsRunning)
             {
-                greenscreenEnabled = true; 
+                greenscreenEnabled = true;
             }
             else
             {
@@ -70,35 +70,7 @@ namespace Alido_ImageProcessing
             }
         }
 
-        private void sepiaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (imageA == null)
-            {
-                MessageBox.Show("Please load Image A or start webcam first.");
-                return;
-            }
-
-            if (videoSource != null && videoSource.IsRunning)
-                sepiaEnabled = true;
-            else
-                ApplySepia();
-        }
-
-        private void histogramToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (imageA == null)
-            {
-                MessageBox.Show("Please load Image A or start webcam first.");
-                return;
-            }
-
-            if (videoSource != null && videoSource.IsRunning)
-                histogramEnabled = true;
-            else
-                ApplyHistogram();
-        }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void imageAToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (imageA == null)
             {
@@ -107,10 +79,20 @@ namespace Alido_ImageProcessing
             }
 
             imageC = new Bitmap(imageA);
-            pictureBox2.Image = imageC;
+            pictureBox3.Image = imageC;
         }
+        private void imageBToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (imageB == null)
+            {
+                MessageBox.Show("Please load Image A first or start webcam.");
+                return;
+            }
 
-        private void greyscaleToolStripMenuItem_Click(object sender, EventArgs e)
+            imageC = new Bitmap(imageB);
+            pictureBox3.Image = imageC;
+        }
+        private void imageAToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             if (imageA == null)
             {
@@ -121,10 +103,20 @@ namespace Alido_ImageProcessing
             if (videoSource != null && videoSource.IsRunning)
                 greyscaleEnabled = true;
             else
-                ApplyGreyscale();
+                ApplyGreyscale(imageA);
         }
 
-        private void colorInversionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void imageBToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (imageB == null)
+            {
+                MessageBox.Show("Please load Image A or start webcam first.");
+                return;
+            }
+            ApplyGreyscale(imageB);
+        }
+
+        private void imageAToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             if (imageA == null)
             {
@@ -135,36 +127,75 @@ namespace Alido_ImageProcessing
             if (videoSource != null && videoSource.IsRunning)
                 invertEnabled = true;
             else
-                ApplyInvert();
+                ApplyInvert(imageA);
         }
 
-
-        private void ApplyGreyscale()
+        private void imageBToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            imageC = new Bitmap(imageA.Width, imageA.Height);
-
-            for (int x = 0; x < imageA.Width; x++)
+            if (imageB == null)
             {
-                for (int y = 0; y < imageA.Height; y++)
-                {
-                    Color pixel = imageA.GetPixel(x, y);
-                    int grey = (int)(0.3 * pixel.R + 0.59 * pixel.G + 0.11 * pixel.B);
-                    imageC.SetPixel(x, y, Color.FromArgb(grey, grey, grey));
-                }
+                MessageBox.Show("Please load Image A or start webcam first.");
+                return;
+            }
+            ApplyInvert(imageB);
+        }
+       
+        private void imageAToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            if (imageA == null)
+            {
+                MessageBox.Show("Please load Image A or start webcam first.");
+                return;
             }
 
-            pictureBox3.Image = imageC;
+            if (videoSource != null && videoSource.IsRunning)
+                sepiaEnabled = true;
+            else
+                ApplyHistogram(imageA);
         }
 
-        private void ApplyInvert()
-        {
-            imageC = new Bitmap(imageA.Width, imageA.Height);
-
-            for (int x = 0; x < imageA.Width; x++)
+         private void imageBToolStripMenuItem4_Click(object sender, EventArgs e)
+         {
+            if (imageB == null)
             {
-                for (int y = 0; y < imageA.Height; y++)
+                MessageBox.Show("Please load Image A or start webcam first.");
+                return;
+            }
+            ApplyHistogram(imageB);
+        }
+
+         private void imageAToolStripMenuItem5_Click(object sender, EventArgs e)
+         {
+            if (imageA == null)
+            {
+                MessageBox.Show("Please load Image A or start webcam first.");
+                return;
+            }
+
+            if (videoSource != null && videoSource.IsRunning)
+                sepiaEnabled = true;
+            else
+                ApplySepia(imageA);
+        }
+
+         private void imageBToolStripMenuItem5_Click(object sender, EventArgs e)
+         {
+            if (imageB == null)
+            {
+                MessageBox.Show("Please load Image A or start webcam first.");
+                return;
+            }
+            ApplySepia(imageB);
+        }
+        private void ApplyInvert(Bitmap Image)
+        {
+            imageC = new Bitmap(Image.Width, Image.Height);
+
+            for (int x = 0; x < Image.Width; x++)
+            {
+                for (int y = 0; y < Image.Height; y++)
                 {
-                    Color pixel = imageA.GetPixel(x, y);
+                    Color pixel = Image.GetPixel(x, y);
                     Color inverted = Color.FromArgb(255 - pixel.R, 255 - pixel.G, 255 - pixel.B);
                     imageC.SetPixel(x, y, inverted);
                 }
@@ -172,16 +203,31 @@ namespace Alido_ImageProcessing
 
             pictureBox3.Image = imageC;
         }
-
-        private void ApplySepia()
+        private void ApplyGreyscale(Bitmap Image)
         {
-            imageC = new Bitmap(imageA.Width, imageA.Height);
+            imageC = new Bitmap(Image.Width, Image.Height);
 
-            for (int x = 0; x < imageA.Width; x++)
+            for (int x = 0; x < Image.Width; x++)
             {
-                for (int y = 0; y < imageA.Height; y++)
+                for (int y = 0; y < Image.Height; y++)
                 {
-                    Color pixel = imageA.GetPixel(x, y);
+                    Color pixel = Image.GetPixel(x, y);
+                    int grey = (int)(0.3 * pixel.R + 0.59 * pixel.G + 0.11 * pixel.B);
+                    imageC.SetPixel(x, y, Color.FromArgb(grey, grey, grey));
+                }
+            }
+
+            pictureBox3.Image = imageC;
+        }
+        private void ApplySepia(Bitmap Image)
+        {
+            imageC = new Bitmap(Image.Width, Image.Height);
+
+            for (int x = 0; x < Image.Width; x++)
+            {
+                for (int y = 0; y < Image.Height; y++)
+                {
+                    Color pixel = Image.GetPixel(x, y);
 
                     int tr = (int)(0.393 * pixel.R + 0.769 * pixel.G + 0.189 * pixel.B);
                     int tg = (int)(0.349 * pixel.R + 0.686 * pixel.G + 0.168 * pixel.B);
@@ -198,15 +244,15 @@ namespace Alido_ImageProcessing
             pictureBox3.Image = imageC;
         }
 
-        private void ApplyHistogram()
+        private void ApplyHistogram(Bitmap Image)
         {
             int[] histogram = new int[256];
 
-            for (int x = 0; x < imageA.Width; x++)
+            for (int x = 0; x < Image.Width; x++)
             {
-                for (int y = 0; y < imageA.Height; y++)
+                for (int y = 0; y < Image.Height; y++)
                 {
-                    Color pixel = imageA.GetPixel(x, y);
+                    Color pixel = Image.GetPixel(x, y);
                     int grey = (int)(0.3 * pixel.R + 0.59 * pixel.G + 0.11 * pixel.B);
                     histogram[grey]++;
                 }
@@ -227,7 +273,7 @@ namespace Alido_ImageProcessing
 
             pictureBox3.Image = histImage;
         }
-
+           
         private void ApplyGreenScreen()
         {
             int width = Math.Min(imageA.Width, imageB.Width);
@@ -382,5 +428,7 @@ namespace Alido_ImageProcessing
                 }
             return result;
         }
+
+        
     }
 }

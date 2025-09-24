@@ -39,10 +39,20 @@ namespace Alido_ImageProcessing
             optionToolStripMenuItem = new ToolStripMenuItem();
             subtractToolStripMenuItem = new ToolStripMenuItem();
             copyToolStripMenuItem = new ToolStripMenuItem();
+            imageAToolStripMenuItem1 = new ToolStripMenuItem();
+            imageBToolStripMenuItem1 = new ToolStripMenuItem();
             greyscaleToolStripMenuItem = new ToolStripMenuItem();
+            imageAToolStripMenuItem2 = new ToolStripMenuItem();
+            imageBToolStripMenuItem2 = new ToolStripMenuItem();
             colorInversionToolStripMenuItem = new ToolStripMenuItem();
+            imageAToolStripMenuItem3 = new ToolStripMenuItem();
+            imageBToolStripMenuItem3 = new ToolStripMenuItem();
             histogramToolStripMenuItem = new ToolStripMenuItem();
+            imageAToolStripMenuItem4 = new ToolStripMenuItem();
+            imageBToolStripMenuItem4 = new ToolStripMenuItem();
             sepiaToolStripMenuItem = new ToolStripMenuItem();
+            imageAToolStripMenuItem5 = new ToolStripMenuItem();
+            imageBToolStripMenuItem5 = new ToolStripMenuItem();
             webcamToolStripMenuItem = new ToolStripMenuItem();
             startToolStripMenuItem = new ToolStripMenuItem();
             stopToolStripMenuItem = new ToolStripMenuItem();
@@ -54,27 +64,27 @@ namespace Alido_ImageProcessing
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(69, 119);
+            pictureBox1.Location = new Point(65, 48);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(285, 265);
+            pictureBox1.Size = new Size(597, 322);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(429, 122);
+            pictureBox2.Location = new Point(65, 406);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(285, 265);
+            pictureBox2.Size = new Size(594, 313);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(806, 131);
+            pictureBox3.Location = new Point(674, 171);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(285, 265);
+            pictureBox3.Size = new Size(605, 430);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
@@ -84,7 +94,7 @@ namespace Alido_ImageProcessing
             menuStrip1.Items.AddRange(new ToolStripItem[] { imageToolStripMenuItem, optionToolStripMenuItem, webcamToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1143, 24);
+            menuStrip1.Size = new Size(1291, 24);
             menuStrip1.TabIndex = 6;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -98,14 +108,14 @@ namespace Alido_ImageProcessing
             // imageAToolStripMenuItem
             // 
             imageAToolStripMenuItem.Name = "imageAToolStripMenuItem";
-            imageAToolStripMenuItem.Size = new Size(180, 22);
+            imageAToolStripMenuItem.Size = new Size(115, 22);
             imageAToolStripMenuItem.Text = "ImageA";
             imageAToolStripMenuItem.Click += imageAToolStripMenuItem_Click;
             // 
             // imageBToolStripMenuItem
             // 
             imageBToolStripMenuItem.Name = "imageBToolStripMenuItem";
-            imageBToolStripMenuItem.Size = new Size(180, 22);
+            imageBToolStripMenuItem.Size = new Size(115, 22);
             imageBToolStripMenuItem.Text = "ImageB";
             imageBToolStripMenuItem.Click += imageBToolStripMenuItem_Click;
             // 
@@ -119,44 +129,114 @@ namespace Alido_ImageProcessing
             // subtractToolStripMenuItem
             // 
             subtractToolStripMenuItem.Name = "subtractToolStripMenuItem";
-            subtractToolStripMenuItem.Size = new Size(180, 22);
+            subtractToolStripMenuItem.Size = new Size(154, 22);
             subtractToolStripMenuItem.Text = "Subtract";
             subtractToolStripMenuItem.Click += subtractToolStripMenuItem_Click;
             // 
             // copyToolStripMenuItem
             // 
+            copyToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { imageAToolStripMenuItem1, imageBToolStripMenuItem1 });
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            copyToolStripMenuItem.Size = new Size(180, 22);
+            copyToolStripMenuItem.Size = new Size(154, 22);
             copyToolStripMenuItem.Text = "Copy";
-            copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
+            // 
+            // imageAToolStripMenuItem1
+            // 
+            imageAToolStripMenuItem1.Name = "imageAToolStripMenuItem1";
+            imageAToolStripMenuItem1.Size = new Size(115, 22);
+            imageAToolStripMenuItem1.Text = "ImageA";
+            imageAToolStripMenuItem1.Click += imageAToolStripMenuItem1_Click;
+            // 
+            // imageBToolStripMenuItem1
+            // 
+            imageBToolStripMenuItem1.Name = "imageBToolStripMenuItem1";
+            imageBToolStripMenuItem1.Size = new Size(115, 22);
+            imageBToolStripMenuItem1.Text = "ImageB";
+            imageBToolStripMenuItem1.Click += imageBToolStripMenuItem1_Click;
             // 
             // greyscaleToolStripMenuItem
             // 
+            greyscaleToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { imageAToolStripMenuItem2, imageBToolStripMenuItem2 });
             greyscaleToolStripMenuItem.Name = "greyscaleToolStripMenuItem";
-            greyscaleToolStripMenuItem.Size = new Size(180, 22);
+            greyscaleToolStripMenuItem.Size = new Size(154, 22);
             greyscaleToolStripMenuItem.Text = "Greyscale";
-            greyscaleToolStripMenuItem.Click += greyscaleToolStripMenuItem_Click;
+            // 
+            // imageAToolStripMenuItem2
+            // 
+            imageAToolStripMenuItem2.Name = "imageAToolStripMenuItem2";
+            imageAToolStripMenuItem2.Size = new Size(115, 22);
+            imageAToolStripMenuItem2.Text = "ImageA";
+            imageAToolStripMenuItem2.Click += imageAToolStripMenuItem2_Click;
+            // 
+            // imageBToolStripMenuItem2
+            // 
+            imageBToolStripMenuItem2.Name = "imageBToolStripMenuItem2";
+            imageBToolStripMenuItem2.Size = new Size(115, 22);
+            imageBToolStripMenuItem2.Text = "ImageB";
+            imageBToolStripMenuItem2.Click += imageBToolStripMenuItem2_Click;
             // 
             // colorInversionToolStripMenuItem
             // 
+            colorInversionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { imageAToolStripMenuItem3, imageBToolStripMenuItem3 });
             colorInversionToolStripMenuItem.Name = "colorInversionToolStripMenuItem";
-            colorInversionToolStripMenuItem.Size = new Size(180, 22);
+            colorInversionToolStripMenuItem.Size = new Size(154, 22);
             colorInversionToolStripMenuItem.Text = "Color Inversion";
-            colorInversionToolStripMenuItem.Click += colorInversionToolStripMenuItem_Click;
+            // 
+            // imageAToolStripMenuItem3
+            // 
+            imageAToolStripMenuItem3.Name = "imageAToolStripMenuItem3";
+            imageAToolStripMenuItem3.Size = new Size(115, 22);
+            imageAToolStripMenuItem3.Text = "ImageA";
+            imageAToolStripMenuItem3.Click += imageAToolStripMenuItem3_Click;
+            // 
+            // imageBToolStripMenuItem3
+            // 
+            imageBToolStripMenuItem3.Name = "imageBToolStripMenuItem3";
+            imageBToolStripMenuItem3.Size = new Size(115, 22);
+            imageBToolStripMenuItem3.Text = "ImageB";
+            imageBToolStripMenuItem3.Click += imageBToolStripMenuItem3_Click;
             // 
             // histogramToolStripMenuItem
             // 
+            histogramToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { imageAToolStripMenuItem4, imageBToolStripMenuItem4 });
             histogramToolStripMenuItem.Name = "histogramToolStripMenuItem";
-            histogramToolStripMenuItem.Size = new Size(180, 22);
+            histogramToolStripMenuItem.Size = new Size(154, 22);
             histogramToolStripMenuItem.Text = "Histogram";
-            histogramToolStripMenuItem.Click += histogramToolStripMenuItem_Click;
+            // 
+            // imageAToolStripMenuItem4
+            // 
+            imageAToolStripMenuItem4.Name = "imageAToolStripMenuItem4";
+            imageAToolStripMenuItem4.Size = new Size(115, 22);
+            imageAToolStripMenuItem4.Text = "ImageA";
+            imageAToolStripMenuItem4.Click += imageAToolStripMenuItem4_Click;
+            // 
+            // imageBToolStripMenuItem4
+            // 
+            imageBToolStripMenuItem4.Name = "imageBToolStripMenuItem4";
+            imageBToolStripMenuItem4.Size = new Size(115, 22);
+            imageBToolStripMenuItem4.Text = "ImageB";
+            imageBToolStripMenuItem4.Click += imageBToolStripMenuItem4_Click;
             // 
             // sepiaToolStripMenuItem
             // 
+            sepiaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { imageAToolStripMenuItem5, imageBToolStripMenuItem5 });
             sepiaToolStripMenuItem.Name = "sepiaToolStripMenuItem";
-            sepiaToolStripMenuItem.Size = new Size(180, 22);
+            sepiaToolStripMenuItem.Size = new Size(154, 22);
             sepiaToolStripMenuItem.Text = "Sepia";
-            sepiaToolStripMenuItem.Click += sepiaToolStripMenuItem_Click;
+            // 
+            // imageAToolStripMenuItem5
+            // 
+            imageAToolStripMenuItem5.Name = "imageAToolStripMenuItem5";
+            imageAToolStripMenuItem5.Size = new Size(115, 22);
+            imageAToolStripMenuItem5.Text = "ImageA";
+            imageAToolStripMenuItem5.Click += imageAToolStripMenuItem5_Click;
+            // 
+            // imageBToolStripMenuItem5
+            // 
+            imageBToolStripMenuItem5.Name = "imageBToolStripMenuItem5";
+            imageBToolStripMenuItem5.Size = new Size(115, 22);
+            imageBToolStripMenuItem5.Text = "ImageB";
+            imageBToolStripMenuItem5.Click += imageBToolStripMenuItem5_Click;
             // 
             // webcamToolStripMenuItem
             // 
@@ -183,7 +263,7 @@ namespace Alido_ImageProcessing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 508);
+            ClientSize = new Size(1291, 770);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
@@ -224,5 +304,15 @@ namespace Alido_ImageProcessing
         private ToolStripMenuItem sepiaToolStripMenuItem;
         private ToolStripMenuItem startToolStripMenuItem;
         private ToolStripMenuItem stopToolStripMenuItem;
+        private ToolStripMenuItem imageAToolStripMenuItem1;
+        private ToolStripMenuItem imageBToolStripMenuItem1;
+        private ToolStripMenuItem imageAToolStripMenuItem2;
+        private ToolStripMenuItem imageBToolStripMenuItem2;
+        private ToolStripMenuItem imageAToolStripMenuItem3;
+        private ToolStripMenuItem imageBToolStripMenuItem3;
+        private ToolStripMenuItem imageAToolStripMenuItem4;
+        private ToolStripMenuItem imageBToolStripMenuItem4;
+        private ToolStripMenuItem imageAToolStripMenuItem5;
+        private ToolStripMenuItem imageBToolStripMenuItem5;
     }
 }
