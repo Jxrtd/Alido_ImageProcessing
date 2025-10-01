@@ -1,9 +1,6 @@
-using System;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
+using Alido_ImageProcessing;
 
 namespace Alido_ImageProcessing
 {
@@ -139,7 +136,7 @@ namespace Alido_ImageProcessing
             }
             ApplyInvert(imageB);
         }
-       
+
         private void imageAToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             if (imageA == null)
@@ -154,8 +151,8 @@ namespace Alido_ImageProcessing
                 ApplyHistogram(imageA);
         }
 
-         private void imageBToolStripMenuItem4_Click(object sender, EventArgs e)
-         {
+        private void imageBToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
             if (imageB == null)
             {
                 MessageBox.Show("Please load Image A or start webcam first.");
@@ -164,8 +161,8 @@ namespace Alido_ImageProcessing
             ApplyHistogram(imageB);
         }
 
-         private void imageAToolStripMenuItem5_Click(object sender, EventArgs e)
-         {
+        private void imageAToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
             if (imageA == null)
             {
                 MessageBox.Show("Please load Image A or start webcam first.");
@@ -178,8 +175,8 @@ namespace Alido_ImageProcessing
                 ApplySepia(imageA);
         }
 
-         private void imageBToolStripMenuItem5_Click(object sender, EventArgs e)
-         {
+        private void imageBToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
             if (imageB == null)
             {
                 MessageBox.Show("Please load Image A or start webcam first.");
@@ -273,7 +270,7 @@ namespace Alido_ImageProcessing
 
             pictureBox3.Image = histImage;
         }
-           
+
         private void ApplyGreenScreen()
         {
             int width = Math.Min(imageA.Width, imageB.Width);
@@ -429,6 +426,121 @@ namespace Alido_ImageProcessing
             return result;
         }
 
-        
+        private void smoothingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetSmoothingMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetGaussianBlurMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetSharpenMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void meanRemovalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetMeanRemovalMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        // -------- IMAGE A --------
+        private void laplascianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetLaplacianMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void allDerectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetEmbossAllDirectionsMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void horizontalVericalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetEmbossHorizontalVerticalMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void lossyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetLossyMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void horizontalOnllyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetEmbossHorizontalMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void verticalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageA == null) { MessageBox.Show("Please load Image A first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageA, ConvMatrix.GetEmbossVerticalMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+
+        // -------- IMAGE B --------
+        private void laplacianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageB == null) { MessageBox.Show("Please load Image B first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageB, ConvMatrix.GetLaplacianMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void allDirectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageB == null) { MessageBox.Show("Please load Image B first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageB, ConvMatrix.GetEmbossAllDirectionsMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void horizontalVerticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageB == null) { MessageBox.Show("Please load Image B first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageB, ConvMatrix.GetEmbossHorizontalVerticalMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void lossyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (imageB == null) { MessageBox.Show("Please load Image B first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageB, ConvMatrix.GetLossyMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void horizontalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageB == null) { MessageBox.Show("Please load Image B first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageB, ConvMatrix.GetEmbossHorizontalMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+        private void verticalOnlyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (imageB == null) { MessageBox.Show("Please load Image B first."); return; }
+            imageC = ConvMatrix.ApplyConvolution(imageB, ConvMatrix.GetEmbossVerticalMatrix());
+            pictureBox3.Image = imageC;
+        }
+
+
     }
 }
